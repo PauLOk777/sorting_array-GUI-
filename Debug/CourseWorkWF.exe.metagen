@@ -25,3 +25,5 @@ Class CourseWorkWF.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Int32 rangeBegin : Public
     Int32 rangeEnd : Public
     Int32 typeOfFilling : Public
+    Int32 counter : Public
+    Int32 speed : Public

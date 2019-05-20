@@ -4,8 +4,8 @@
 
 using namespace std;
 
-void selectionSort(double* Array, int size) {
-	for (int i = 0; i < size; i++) {
+void selectionSort(double* Array, int size, int counter) {
+	for (int i = counter; i < size; i++) {
 		int index = i;
 		double temp_1 = Array[i];
 		for (int j = i; j < size; j++) {
@@ -14,9 +14,9 @@ void selectionSort(double* Array, int size) {
 				index = j;
 			}
 		}
-		double temp_2 = temp_1;
 		Array[index] = Array[i];
 		Array[i] = temp_1;
+		return;
 	}
 }
 
@@ -34,11 +34,10 @@ void shellSort(double* Array, int size) {
 
 void down(double* Array, int Size, int i)
 {
-	while (2 * i + 1 < Size)
-	{
+	while (2 * i + 1 < Size) {
 		if (2 * i + 2 >= Size)
 		{
-			if (Array[i] >= Array[2 * i + 1])
+			if (Array[i] <= Array[2 * i + 1])
 			{
 				swap(Array[i], Array[2 * i + 1]);
 				i = 2 * i + 1;
@@ -47,13 +46,13 @@ void down(double* Array, int Size, int i)
 		}
 		else
 		{
-			if (Array[2 * i + 1] < Array[2 * i + 2] && Array[i] > Array[2 * i + 1])
+			if (Array[2 * i + 1] > Array[2 * i + 2] && Array[i] < Array[2 * i + 1])
 			{
 				swap(Array[i], Array[2 * i + 1]);
 				i = 2 * i + 1;
 				continue;
 			}
-			if (Array[2 * i + 1] >= Array[2 * i + 2] && Array[i] > Array[2 * i + 2])
+			if (Array[2 * i + 1] <= Array[2 * i + 2] && Array[i] < Array[2 * i + 2])
 			{
 				swap(Array[i], Array[2 * i + 2]);
 				i = 2 * i + 2;
