@@ -439,6 +439,7 @@ namespace CourseWorkWF {
 		}
 	private:
 		System::Void Button6_Click(System::Object^ sender, System::EventArgs^ e) {
+			textBox4->Enabled = false;
 			if (Array == nullptr) {
 				MessageBox::Show("Please, fill array", "Error");
 				return;
@@ -500,7 +501,6 @@ namespace CourseWorkWF {
 			textBox1->Enabled = false;
 			textBox2->Enabled = false;
 			textBox3->Enabled = false;
-			textBox4->Enabled = false;
 			textBox5->Enabled = false;
 			for (int i = 0; i < size; i++) {
 				this->chart1->Series["value"]->Points->AddXY(i + 1, Array[i]);
@@ -564,7 +564,6 @@ namespace CourseWorkWF {
 			textBox1->Enabled = false;
 			textBox2->Enabled = false;
 			textBox3->Enabled = false;
-			textBox4->Enabled = false;
 			textBox5->Enabled = false;
 			for (int i = 0; i < size; i++) {
 				this->chart1->Series["value"]->Points->AddXY(i + 1, Array[i]);
@@ -646,7 +645,7 @@ namespace CourseWorkWF {
 	private: 
 		System::Void ExitToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 			if (Array != nullptr) delete[] Array;
-			Application::ExitThread();
+			Application::Exit();
 		}
 	private: 
 		System::Void TextBox4_TextChanged(System::Object^ sender, System::EventArgs^ e) {
