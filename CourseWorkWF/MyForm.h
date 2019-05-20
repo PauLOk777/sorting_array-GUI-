@@ -220,6 +220,9 @@ namespace CourseWorkWF {
 			// 
 			// chart1
 			// 
+			this->chart1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
 			chartArea1->Name = L"ChartArea1";
 			this->chart1->ChartAreas->Add(chartArea1);
 			this->chart1->Enabled = false;
@@ -231,7 +234,7 @@ namespace CourseWorkWF {
 			series1->Legend = L"Legend1";
 			series1->Name = L"value";
 			this->chart1->Series->Add(series1);
-			this->chart1->Size = System::Drawing::Size(450, 331);
+			this->chart1->Size = System::Drawing::Size(452, 331);
 			this->chart1->TabIndex = 11;
 			this->chart1->Text = L"chart1";
 			this->chart1->Click += gcnew System::EventHandler(this, &MyForm::Chart1_Click);
@@ -270,6 +273,7 @@ namespace CourseWorkWF {
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
 			this->groupBox1->Controls->Add(this->label4);
 			this->groupBox1->Controls->Add(this->textBox3);
 			this->groupBox1->Controls->Add(this->label3);
@@ -331,6 +335,7 @@ namespace CourseWorkWF {
 			// 
 			// groupBox2
 			// 
+			this->groupBox2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
 			this->groupBox2->Controls->Add(this->button5);
 			this->groupBox2->Controls->Add(this->label1);
 			this->groupBox2->Controls->Add(this->button6);
@@ -345,6 +350,7 @@ namespace CourseWorkWF {
 			// 
 			// label5
 			// 
+			this->label5->Anchor = System::Windows::Forms::AnchorStyles::Right;
 			this->label5->AutoSize = true;
 			this->label5->Location = System::Drawing::Point(456, 159);
 			this->label5->Name = L"label5";
@@ -354,6 +360,7 @@ namespace CourseWorkWF {
 			// 
 			// textBox4
 			// 
+			this->textBox4->Anchor = System::Windows::Forms::AnchorStyles::Right;
 			this->textBox4->Location = System::Drawing::Point(517, 156);
 			this->textBox4->Name = L"textBox4";
 			this->textBox4->Size = System::Drawing::Size(62, 20);
@@ -374,6 +381,7 @@ namespace CourseWorkWF {
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"MyForm";
 			this->Text = L"sorting_array";
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
@@ -604,5 +612,7 @@ namespace CourseWorkWF {
 		System::Void TextBox4_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 			
 		}
-	};
+	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }
