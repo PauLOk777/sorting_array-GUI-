@@ -4,6 +4,7 @@
 #include "SortMethods.h"
 #include <string>
 #include <Windows.h>
+#include <msclr\marshal_cppstd.h>
 
 namespace CourseWorkWF {
 
@@ -35,6 +36,8 @@ namespace CourseWorkWF {
 	private: System::Windows::Forms::ToolStripMenuItem^ exitToolStripMenuItem;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::TextBox^ textBox4;
+	private: System::Windows::Forms::TextBox^ textBox5;
+	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Button^ button7;
 	public:
 
@@ -122,6 +125,8 @@ namespace CourseWorkWF {
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			this->groupBox1->SuspendLayout();
@@ -132,7 +137,7 @@ namespace CourseWorkWF {
 			// 
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Selection sort", L"Shell sort", L"Heap sort" });
-			this->comboBox1->Location = System::Drawing::Point(15, 39);
+			this->comboBox1->Location = System::Drawing::Point(16, 34);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(99, 21);
 			this->comboBox1->TabIndex = 2;
@@ -141,7 +146,7 @@ namespace CourseWorkWF {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(23, 24);
+			this->label1->Location = System::Drawing::Point(22, 18);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(83, 13);
 			this->label1->TabIndex = 5;
@@ -149,7 +154,7 @@ namespace CourseWorkWF {
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(15, 70);
+			this->button4->Location = System::Drawing::Point(16, 59);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(99, 23);
 			this->button4->TabIndex = 7;
@@ -159,7 +164,7 @@ namespace CourseWorkWF {
 			// 
 			// button5
 			// 
-			this->button5->Location = System::Drawing::Point(15, 134);
+			this->button5->Location = System::Drawing::Point(16, 117);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(99, 33);
 			this->button5->TabIndex = 8;
@@ -169,7 +174,7 @@ namespace CourseWorkWF {
 			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(15, 98);
+			this->button6->Location = System::Drawing::Point(16, 85);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(99, 33);
 			this->button6->TabIndex = 9;
@@ -241,7 +246,7 @@ namespace CourseWorkWF {
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(45, 72);
+			this->textBox1->Location = System::Drawing::Point(45, 101);
 			this->textBox1->Multiline = true;
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(69, 20);
@@ -251,7 +256,7 @@ namespace CourseWorkWF {
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(45, 98);
+			this->textBox2->Location = System::Drawing::Point(45, 122);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(29, 20);
 			this->textBox2->TabIndex = 4;
@@ -263,7 +268,7 @@ namespace CourseWorkWF {
 			this->button1->AutoSize = true;
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button1->Location = System::Drawing::Point(15, 45);
+			this->button1->Location = System::Drawing::Point(15, 76);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(99, 23);
 			this->button1->TabIndex = 0;
@@ -274,17 +279,19 @@ namespace CourseWorkWF {
 			// groupBox1
 			// 
 			this->groupBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->groupBox1->Controls->Add(this->label4);
-			this->groupBox1->Controls->Add(this->textBox3);
 			this->groupBox1->Controls->Add(this->label3);
-			this->groupBox1->Controls->Add(this->label2);
+			this->groupBox1->Controls->Add(this->label4);
 			this->groupBox1->Controls->Add(this->button7);
-			this->groupBox1->Controls->Add(this->button1);
 			this->groupBox1->Controls->Add(this->textBox2);
+			this->groupBox1->Controls->Add(this->textBox3);
+			this->groupBox1->Controls->Add(this->label6);
+			this->groupBox1->Controls->Add(this->textBox5);
+			this->groupBox1->Controls->Add(this->button1);
 			this->groupBox1->Controls->Add(this->textBox1);
+			this->groupBox1->Controls->Add(this->label2);
 			this->groupBox1->Location = System::Drawing::Point(456, 27);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(124, 123);
+			this->groupBox1->Size = System::Drawing::Size(124, 148);
 			this->groupBox1->TabIndex = 12;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Way of filling";
@@ -292,7 +299,7 @@ namespace CourseWorkWF {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(75, 101);
+			this->label4->Location = System::Drawing::Point(75, 125);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(10, 13);
 			this->label4->TabIndex = 10;
@@ -300,7 +307,7 @@ namespace CourseWorkWF {
 			// 
 			// textBox3
 			// 
-			this->textBox3->Location = System::Drawing::Point(85, 98);
+			this->textBox3->Location = System::Drawing::Point(85, 122);
 			this->textBox3->Name = L"textBox3";
 			this->textBox3->Size = System::Drawing::Size(29, 20);
 			this->textBox3->TabIndex = 9;
@@ -308,7 +315,7 @@ namespace CourseWorkWF {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(2, 100);
+			this->label3->Location = System::Drawing::Point(2, 125);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(42, 13);
 			this->label3->TabIndex = 8;
@@ -317,7 +324,7 @@ namespace CourseWorkWF {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(2, 76);
+			this->label2->Location = System::Drawing::Point(2, 104);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(30, 13);
 			this->label2->TabIndex = 7;
@@ -325,7 +332,7 @@ namespace CourseWorkWF {
 			// 
 			// button7
 			// 
-			this->button7->Location = System::Drawing::Point(15, 19);
+			this->button7->Location = System::Drawing::Point(15, 16);
 			this->button7->Name = L"button7";
 			this->button7->Size = System::Drawing::Size(99, 23);
 			this->button7->TabIndex = 6;
@@ -341,9 +348,9 @@ namespace CourseWorkWF {
 			this->groupBox2->Controls->Add(this->button6);
 			this->groupBox2->Controls->Add(this->button4);
 			this->groupBox2->Controls->Add(this->comboBox1);
-			this->groupBox2->Location = System::Drawing::Point(455, 185);
+			this->groupBox2->Location = System::Drawing::Point(455, 202);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(124, 173);
+			this->groupBox2->Size = System::Drawing::Size(124, 156);
 			this->groupBox2->TabIndex = 13;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Actions and Algorithm";
@@ -352,7 +359,7 @@ namespace CourseWorkWF {
 			// 
 			this->label5->Anchor = System::Windows::Forms::AnchorStyles::Right;
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(456, 159);
+			this->label5->Location = System::Drawing::Point(458, 183);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(60, 13);
 			this->label5->TabIndex = 14;
@@ -361,11 +368,27 @@ namespace CourseWorkWF {
 			// textBox4
 			// 
 			this->textBox4->Anchor = System::Windows::Forms::AnchorStyles::Right;
-			this->textBox4->Location = System::Drawing::Point(517, 156);
+			this->textBox4->Location = System::Drawing::Point(517, 180);
 			this->textBox4->Name = L"textBox4";
 			this->textBox4->Size = System::Drawing::Size(62, 20);
 			this->textBox4->TabIndex = 15;
 			this->textBox4->TextChanged += gcnew System::EventHandler(this, &MyForm::TextBox4_TextChanged);
+			// 
+			// textBox5
+			// 
+			this->textBox5->Location = System::Drawing::Point(40, 42);
+			this->textBox5->Name = L"textBox5";
+			this->textBox5->Size = System::Drawing::Size(74, 20);
+			this->textBox5->TabIndex = 16;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(2, 45);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(38, 13);
+			this->label6->TabIndex = 11;
+			this->label6->Text = L"Name:";
 			// 
 			// MyForm
 			// 
@@ -477,6 +500,8 @@ namespace CourseWorkWF {
 			textBox1->Enabled = false;
 			textBox2->Enabled = false;
 			textBox3->Enabled = false;
+			textBox4->Enabled = false;
+			textBox5->Enabled = false;
 			for (int i = 0; i < size; i++) {
 				this->chart1->Series["value"]->Points->AddXY(i + 1, Array[i]);
 			}
@@ -496,9 +521,14 @@ namespace CourseWorkWF {
 			textBox1->Enabled = true;
 			textBox2->Enabled = true;
 			textBox3->Enabled = true;
+			textBox4->Enabled = true;
+			textBox5->Enabled = true;
 			textBox1->Text = "";
 			textBox2->Text = "";
 			textBox3->Text = "";
+			textBox4->Text = "";
+			textBox5->Text = "";
+
 			this->chart1->Series["value"]->Points->Clear();	
 		}
 	private:
@@ -515,18 +545,27 @@ namespace CourseWorkWF {
 		System::Void Button7_Click(System::Object^ sender, System::EventArgs^ e) {
 			ifstream fin1, fin2;
 			int _size;
-			openFileINPUT(fin1, "input.txt");
+			bool flag = true;;
+			msclr::interop::marshal_context context;
+			std::string stdString = context.marshal_as<std::string>(textBox5->Text);
+			openFileINPUT(fin1, stdString, flag);
+			if (!flag) {
+				MessageBox::Show("Invalid file", "Error");
+				return;
+			}
 			readSize(fin1, _size);
 			fin1.close();
 			size = _size;
 			Array = new double[size];
-			openFileINPUT(fin2, "input.txt");
+			openFileINPUT(fin2, stdString, flag);
 			fileFillingArray(fin2, Array, size);
 			button1->Enabled = false;
 			button7->Enabled = false;
 			textBox1->Enabled = false;
 			textBox2->Enabled = false;
 			textBox3->Enabled = false;
+			textBox4->Enabled = false;
+			textBox5->Enabled = false;
 			for (int i = 0; i < size; i++) {
 				this->chart1->Series["value"]->Points->AddXY(i + 1, Array[i]);
 			}
@@ -607,13 +646,15 @@ namespace CourseWorkWF {
 	private: 
 		System::Void ExitToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 			if (Array != nullptr) delete[] Array;
-			Application::Exit();
+			Application::ExitThread();
 		}
 	private: 
 		System::Void TextBox4_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 			
 		}
-	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
-	}
-};
+	private: 
+		System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+			
+		}
+	};
 }

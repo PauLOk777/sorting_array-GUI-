@@ -6,7 +6,7 @@
 using namespace std;
 
 istream& fileFillingArray(ifstream&, double*, int);
-istream& openFileINPUT(ifstream&, string);
+istream& openFileINPUT(ifstream&, string, bool&);
 istream& readSize(ifstream&, int&);
 ostream& openFileOUTPUT(ofstream&, string);
 void writeFile(double* Array, int size);

@@ -5,12 +5,12 @@
 
 using namespace std;
 
-istream& openFileINPUT(ifstream& fin, string name) {
+istream& openFileINPUT(ifstream& fin, string name, bool &flag) {
 	fin.open(name);
 	if (!fin.is_open()) {
 		cout << "Error, we dont find this file.";
-		system("pause");
-		exit(1);
+		flag = false;
+		return fin;
 	}
 	cout << "Input file is opened." << endl;
 	return fin;
