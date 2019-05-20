@@ -488,7 +488,7 @@ namespace CourseWorkWF {
 		}
 	private: 
 		System::Void Button5_Click(System::Object^ sender, System::EventArgs^ e) {
-			delete[] Array;
+			if(Array != nullptr) delete[] Array;
 			size = 0;
 			button4->Enabled = true;
 			button1->Enabled = true;
@@ -503,6 +503,7 @@ namespace CourseWorkWF {
 		}
 	private:
 		System::Void Button4_Click(System::Object^ sender, System::EventArgs^ e) {
+			if (Array == nullptr) return;
 			writeFile(Array, size);
 			MessageBox::Show("Success", "Output file was filled");
 	}
