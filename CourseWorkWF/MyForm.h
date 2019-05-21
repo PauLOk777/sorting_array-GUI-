@@ -103,6 +103,7 @@ namespace CourseWorkWF {
 			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button4 = (gcnew System::Windows::Forms::Button());
@@ -243,8 +244,13 @@ namespace CourseWorkWF {
 			series2->Color = System::Drawing::Color::Red;
 			series2->Legend = L"Legend1";
 			series2->Name = L"changed";
+			series3->ChartArea = L"ChartArea1";
+			series3->Color = System::Drawing::Color::Lime;
+			series3->Legend = L"Legend1";
+			series3->Name = L"sorted";
 			this->chart1->Series->Add(series1);
 			this->chart1->Series->Add(series2);
+			this->chart1->Series->Add(series3);
 			this->chart1->Size = System::Drawing::Size(452, 331);
 			this->chart1->TabIndex = 11;
 			this->chart1->Text = L"chart1";
@@ -496,9 +502,30 @@ namespace CourseWorkWF {
 			}
 			this->chart1->Series["value"]->Points->Clear();
 			this->chart1->Series["changed"]->Points->Clear();
-			for (int l = 0; l < size; l++) {
-				this->chart1->Series["value"]->Points->AddXY(l + 1, Array[l]);
+			for (int i = 0; i < size; i++) {
+				this->chart1->Series["value"]->Points->AddXY(i + 1, Array[i]);
 			}
+			for (int l = 0; l < size; l++) {
+				this->chart1->Series["value"]->Points->Clear();
+				this->chart1->Series["sorted"]->Points->Clear();
+				for (int j = 0; j < size; j++) {
+					if (l > j) {
+						this->chart1->Series["sorted"]->Points->AddXY(j + 1, Array[j]);
+						continue;
+					}
+					this->chart1->Series["value"]->Points->AddXY(j + 1, Array[j]);
+				}
+				chart1->Update();
+				Sleep(speed);
+			}
+			this->chart1->Series["value"]->Points->Clear();
+			this->chart1->Series["changed"]->Points->Clear();
+			this->chart1->Series["sorted"]->Points->Clear();
+			for (int i = 0; i < size; i++) {
+				this->chart1->Series["sorted"]->Points->AddXY(i + 1, Array[i]);
+			}
+			chart1->Update();
+			Sleep(speed);
 			MessageBox::Show("Success", "Array was sorted");
 		}
 	private:
@@ -549,6 +576,7 @@ namespace CourseWorkWF {
 			textBox3->Text = "";
 			textBox4->Text = "";
 			textBox5->Text = "";
+			this->chart1->Series["sorted"]->Points->Clear();
 			this->chart1->Series["changed"]->Points->Clear();
 			this->chart1->Series["value"]->Points->Clear();	
 		}
