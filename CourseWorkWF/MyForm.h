@@ -102,6 +102,7 @@ namespace CourseWorkWF {
 			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
 			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button4 = (gcnew System::Windows::Forms::Button());
@@ -117,16 +118,16 @@ namespace CourseWorkWF {
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->button7 = (gcnew System::Windows::Forms::Button());
+			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
-			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			this->groupBox1->SuspendLayout();
@@ -238,7 +239,12 @@ namespace CourseWorkWF {
 			series1->ChartArea = L"ChartArea1";
 			series1->Legend = L"Legend1";
 			series1->Name = L"value";
+			series2->ChartArea = L"ChartArea1";
+			series2->Color = System::Drawing::Color::Red;
+			series2->Legend = L"Legend1";
+			series2->Name = L"changed";
 			this->chart1->Series->Add(series1);
+			this->chart1->Series->Add(series2);
 			this->chart1->Size = System::Drawing::Size(452, 331);
 			this->chart1->TabIndex = 11;
 			this->chart1->Text = L"chart1";
@@ -296,22 +302,6 @@ namespace CourseWorkWF {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Way of filling";
 			// 
-			// label4
-			// 
-			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(75, 125);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(10, 13);
-			this->label4->TabIndex = 10;
-			this->label4->Text = L"-";
-			// 
-			// textBox3
-			// 
-			this->textBox3->Location = System::Drawing::Point(85, 122);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(29, 20);
-			this->textBox3->TabIndex = 9;
-			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
@@ -321,14 +311,14 @@ namespace CourseWorkWF {
 			this->label3->TabIndex = 8;
 			this->label3->Text = L"Range:";
 			// 
-			// label2
+			// label4
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(2, 104);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(30, 13);
-			this->label2->TabIndex = 7;
-			this->label2->Text = L"Size:";
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(75, 125);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(10, 13);
+			this->label4->TabIndex = 10;
+			this->label4->Text = L"-";
 			// 
 			// button7
 			// 
@@ -339,6 +329,38 @@ namespace CourseWorkWF {
 			this->button7->Text = L"Fill from file";
 			this->button7->UseVisualStyleBackColor = true;
 			this->button7->Click += gcnew System::EventHandler(this, &MyForm::Button7_Click);
+			// 
+			// textBox3
+			// 
+			this->textBox3->Location = System::Drawing::Point(85, 122);
+			this->textBox3->Name = L"textBox3";
+			this->textBox3->Size = System::Drawing::Size(29, 20);
+			this->textBox3->TabIndex = 9;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(2, 45);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(38, 13);
+			this->label6->TabIndex = 11;
+			this->label6->Text = L"Name:";
+			// 
+			// textBox5
+			// 
+			this->textBox5->Location = System::Drawing::Point(40, 42);
+			this->textBox5->Name = L"textBox5";
+			this->textBox5->Size = System::Drawing::Size(74, 20);
+			this->textBox5->TabIndex = 16;
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(2, 104);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(30, 13);
+			this->label2->TabIndex = 7;
+			this->label2->Text = L"Size:";
 			// 
 			// groupBox2
 			// 
@@ -373,22 +395,6 @@ namespace CourseWorkWF {
 			this->textBox4->Size = System::Drawing::Size(62, 20);
 			this->textBox4->TabIndex = 15;
 			this->textBox4->TextChanged += gcnew System::EventHandler(this, &MyForm::TextBox4_TextChanged);
-			// 
-			// textBox5
-			// 
-			this->textBox5->Location = System::Drawing::Point(40, 42);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(74, 20);
-			this->textBox5->TabIndex = 16;
-			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(2, 45);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(38, 13);
-			this->label6->TabIndex = 11;
-			this->label6->Text = L"Name:";
 			// 
 			// MyForm
 			// 
@@ -449,9 +455,14 @@ namespace CourseWorkWF {
 			}
 			if (comboBox1->SelectedItem->ToString() == "Selection sort") {
 				for (int i = 0; i < size; i++) {
-					selectionSort(Array, size, i);
+					int temp = selectionSort(Array, size, i);
 					this->chart1->Series["value"]->Points->Clear();
+					this->chart1->Series["changed"]->Points->Clear();
 					for (int j = 0; j < size; j++) {
+						if (j == i || j == temp) {
+							this->chart1->Series["changed"]->Points->AddXY(j + 1, Array[j]);
+							continue;
+						}
 						this->chart1->Series["value"]->Points->AddXY(j + 1, Array[j]);
 					}
 					chart1->Update();
@@ -465,7 +476,12 @@ namespace CourseWorkWF {
 							if (Array[k - i] > Array[k]) {
 								swap(Array[k - i], Array[k]);
 								this->chart1->Series["value"]->Points->Clear();
+								this->chart1->Series["changed"]->Points->Clear();
 								for (int l = 0; l < size; l++) {
+									if (l == k - i || l == k) {
+										this->chart1->Series["changed"]->Points->AddXY(l + 1, Array[j]);
+										continue;
+									}
 									this->chart1->Series["value"]->Points->AddXY(l + 1, Array[l]);
 								}
 								chart1->Update();
@@ -477,6 +493,11 @@ namespace CourseWorkWF {
 			}
 			if (comboBox1->SelectedItem->ToString() == "Heap sort") {
 				heapSort(Array, size);
+			}
+			this->chart1->Series["value"]->Points->Clear();
+			this->chart1->Series["changed"]->Points->Clear();
+			for (int l = 0; l < size; l++) {
+				this->chart1->Series["value"]->Points->AddXY(l + 1, Array[l]);
 			}
 			MessageBox::Show("Success", "Array was sorted");
 		}
@@ -528,7 +549,7 @@ namespace CourseWorkWF {
 			textBox3->Text = "";
 			textBox4->Text = "";
 			textBox5->Text = "";
-
+			this->chart1->Series["changed"]->Points->Clear();
 			this->chart1->Series["value"]->Points->Clear();	
 		}
 	private:
@@ -580,7 +601,12 @@ namespace CourseWorkWF {
 					{
 						swap(Array[i], Array[2 * i + 1]);
 						this->chart1->Series["value"]->Points->Clear();
+						this->chart1->Series["changed"]->Points->Clear();
 						for (int l = 0; l < size; l++) {
+							if (l == i || l == 2*i + 1) {
+								this->chart1->Series["changed"]->Points->AddXY(l + 1, Array[l]);
+								continue;
+							}
 							this->chart1->Series["value"]->Points->AddXY(l + 1, Array[l]);
 						}
 						chart1->Update();
@@ -595,7 +621,12 @@ namespace CourseWorkWF {
 					{
 						swap(Array[i], Array[2 * i + 1]);
 						this->chart1->Series["value"]->Points->Clear();
+						this->chart1->Series["changed"]->Points->Clear();
 						for (int l = 0; l < size; l++) {
+							if (l == i || l == 2*i + 1) {
+								this->chart1->Series["changed"]->Points->AddXY(l + 1, Array[l]);
+								continue;
+							}
 							this->chart1->Series["value"]->Points->AddXY(l + 1, Array[l]);
 						}
 						chart1->Update();
@@ -607,7 +638,12 @@ namespace CourseWorkWF {
 					{
 						swap(Array[i], Array[2 * i + 2]);
 						this->chart1->Series["value"]->Points->Clear();
+						this->chart1->Series["changed"]->Points->Clear();
 						for (int l = 0; l < size; l++) {
+							if (l == i || l == 2*i + 2) {
+								this->chart1->Series["changed"]->Points->AddXY(l + 1, Array[l]);
+								continue;
+							}
 							this->chart1->Series["value"]->Points->AddXY(l + 1, Array[l]);
 						}
 						chart1->Update();
@@ -633,7 +669,12 @@ namespace CourseWorkWF {
 			{
 				swap(Array[0], Array[Size]);
 				this->chart1->Series["value"]->Points->Clear();
+				this->chart1->Series["changed"]->Points->Clear();
 				for (int l = 0; l < size; l++) {
+					if (l == 0 || l == Size) {
+						this->chart1->Series["changed"]->Points->AddXY(l + 1, Array[l]);
+						continue;
+					}
 					this->chart1->Series["value"]->Points->AddXY(l + 1, Array[l]);
 				}
 				chart1->Update();

@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void selectionSort(double* Array, int size, int counter) {
+int selectionSort(double* Array, int size, int counter) {
 	for (int i = counter; i < size; i++) {
 		int index = i;
 		double temp_1 = Array[i];
@@ -16,7 +16,7 @@ void selectionSort(double* Array, int size, int counter) {
 		}
 		Array[index] = Array[i];
 		Array[i] = temp_1;
-		return;
+		return index;
 	}
 }
 
