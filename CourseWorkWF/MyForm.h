@@ -4,6 +4,7 @@
 #include "SortMethods.h"
 #include <string>
 #include <Windows.h>
+#include <cmath>
 #include <msclr\marshal_cppstd.h>
 
 namespace CourseWorkWF {
@@ -35,9 +36,12 @@ namespace CourseWorkWF {
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::ToolStripMenuItem^ exitToolStripMenuItem;
 	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::TextBox^ textBox4;
+
 	private: System::Windows::Forms::TextBox^ textBox5;
 	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::TrackBar^ trackBar1;
+	private: System::Windows::Forms::Label^ label7;
+	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::Button^ button7;
 	public:
 
@@ -104,6 +108,7 @@ namespace CourseWorkWF {
 			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button4 = (gcnew System::Windows::Forms::Button());
@@ -128,11 +133,14 @@ namespace CourseWorkWF {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+			this->trackBar1 = (gcnew System::Windows::Forms::TrackBar());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// comboBox1
@@ -192,7 +200,7 @@ namespace CourseWorkWF {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(584, 24);
+			this->menuStrip1->Size = System::Drawing::Size(784, 24);
 			this->menuStrip1->TabIndex = 10;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -251,7 +259,7 @@ namespace CourseWorkWF {
 			this->chart1->Series->Add(series1);
 			this->chart1->Series->Add(series2);
 			this->chart1->Series->Add(series3);
-			this->chart1->Size = System::Drawing::Size(452, 331);
+			this->chart1->Size = System::Drawing::Size(652, 531);
 			this->chart1->TabIndex = 11;
 			this->chart1->Text = L"chart1";
 			this->chart1->Click += gcnew System::EventHandler(this, &MyForm::Chart1_Click);
@@ -301,7 +309,7 @@ namespace CourseWorkWF {
 			this->groupBox1->Controls->Add(this->button1);
 			this->groupBox1->Controls->Add(this->textBox1);
 			this->groupBox1->Controls->Add(this->label2);
-			this->groupBox1->Location = System::Drawing::Point(456, 27);
+			this->groupBox1->Location = System::Drawing::Point(656, 27);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(124, 148);
 			this->groupBox1->TabIndex = 12;
@@ -376,7 +384,7 @@ namespace CourseWorkWF {
 			this->groupBox2->Controls->Add(this->button6);
 			this->groupBox2->Controls->Add(this->button4);
 			this->groupBox2->Controls->Add(this->comboBox1);
-			this->groupBox2->Location = System::Drawing::Point(455, 202);
+			this->groupBox2->Location = System::Drawing::Point(655, 402);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(124, 156);
 			this->groupBox2->TabIndex = 13;
@@ -387,32 +395,58 @@ namespace CourseWorkWF {
 			// 
 			this->label5->Anchor = System::Windows::Forms::AnchorStyles::Right;
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(458, 183);
+			this->label5->Location = System::Drawing::Point(668, 271);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(60, 13);
+			this->label5->Size = System::Drawing::Size(41, 13);
 			this->label5->TabIndex = 14;
-			this->label5->Text = L"Speed(ms):";
+			this->label5->Text = L"Speed:";
+			this->label5->Click += gcnew System::EventHandler(this, &MyForm::Label5_Click);
 			// 
-			// textBox4
+			// trackBar1
 			// 
-			this->textBox4->Anchor = System::Windows::Forms::AnchorStyles::Right;
-			this->textBox4->Location = System::Drawing::Point(517, 180);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(62, 20);
-			this->textBox4->TabIndex = 15;
-			this->textBox4->TextChanged += gcnew System::EventHandler(this, &MyForm::TextBox4_TextChanged);
+			this->trackBar1->Anchor = System::Windows::Forms::AnchorStyles::Right;
+			this->trackBar1->LargeChange = 10;
+			this->trackBar1->Location = System::Drawing::Point(661, 287);
+			this->trackBar1->Maximum = 0;
+			this->trackBar1->Minimum = -300;
+			this->trackBar1->Name = L"trackBar1";
+			this->trackBar1->Size = System::Drawing::Size(118, 45);
+			this->trackBar1->TabIndex = 16;
+			this->trackBar1->ValueChanged += gcnew System::EventHandler(this, &MyForm::TrackBar1_ValueChanged);
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(725, 271);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(0, 13);
+			this->label7->TabIndex = 17;
+			// 
+			// label8
+			// 
+			this->label8->Anchor = System::Windows::Forms::AnchorStyles::Right;
+			this->label8->AutoSize = true;
+			this->label8->Location = System::Drawing::Point(747, 271);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(13, 13);
+			this->label8->TabIndex = 18;
+			this->label8->Text = L"0";
+			this->label8->TextChanged += gcnew System::EventHandler(this, &MyForm::Label8_TextChanged);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(584, 361);
-			this->Controls->Add(this->textBox4);
+			this->ClientSize = System::Drawing::Size(784, 561);
+			this->Controls->Add(this->label8);
+			this->Controls->Add(this->label7);
+			this->Controls->Add(this->trackBar1);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->chart1);
 			this->Controls->Add(this->menuStrip1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"MyForm";
 			this->Text = L"sorting_array";
@@ -424,6 +458,7 @@ namespace CourseWorkWF {
 			this->groupBox1->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -451,14 +486,11 @@ namespace CourseWorkWF {
 		}
 	private:
 		System::Void Button6_Click(System::Object^ sender, System::EventArgs^ e) {
-			textBox4->Enabled = false;
 			if (Array == nullptr) {
 				MessageBox::Show("Please, fill array", "Error");
 				return;
 			}
-			if (textBox4->Text != "") {
-				speed = Convert::ToInt32(textBox4->Text);
-			}
+			speed = abs(Convert::ToInt32(trackBar1->Value));
 			if (comboBox1->SelectedItem->ToString() == "Selection sort") {
 				for (int i = 0; i < size; i++) {
 					int temp = selectionSort(Array, size, i);
@@ -569,12 +601,10 @@ namespace CourseWorkWF {
 			textBox1->Enabled = true;
 			textBox2->Enabled = true;
 			textBox3->Enabled = true;
-			textBox4->Enabled = true;
 			textBox5->Enabled = true;
 			textBox1->Text = "";
 			textBox2->Text = "";
 			textBox3->Text = "";
-			textBox4->Text = "";
 			textBox5->Text = "";
 			this->chart1->Series["sorted"]->Points->Clear();
 			this->chart1->Series["changed"]->Points->Clear();
@@ -723,6 +753,18 @@ namespace CourseWorkWF {
 	private: 
 		System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 			
+		}
+	private: 
+		System::Void Label5_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+		}
+	private: 
+		System::Void Label8_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+			
+		}
+	private:
+		System::Void TrackBar1_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
+			label8->Text = Convert::ToString(abs(trackBar1->Value));
 		}
 	};
 }
