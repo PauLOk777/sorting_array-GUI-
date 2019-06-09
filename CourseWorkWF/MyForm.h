@@ -21,13 +21,11 @@ namespace CourseWorkWF {
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
-	public:
+	private:
 		double* Array;
 		int size;
 		int rangeBegin;
 		int rangeEnd;
-		int typeOfFilling;
-		int counter;
 		int speed;
 	private: System::Windows::Forms::Label^ label3;
 	public:
@@ -51,10 +49,8 @@ namespace CourseWorkWF {
 			Array = nullptr;
 			InitializeComponent();
 			size = 1;
-			counter = 0;
 			rangeBegin = 0;
 			rangeEnd = 1;
-			typeOfFilling = 0;
 			speed = 150;
 		}
 
@@ -534,6 +530,10 @@ namespace CourseWorkWF {
 				MessageBox::Show("Fill all fields!", "Error");
 				return;
 			}
+			if (Convert::ToInt32(textBox1->Text) <= 0) {
+				MessageBox::Show("Size must be more then 0", "Error");
+				return;
+			}
 			int _size = Convert::ToInt32(textBox1->Text);
 			int begin = Convert::ToInt32(textBox2->Text);
 			int end = Convert::ToInt32(textBox3->Text);
@@ -601,6 +601,10 @@ namespace CourseWorkWF {
 				return;
 			}
 			readSize(fin1, _size);
+			if (!_size) {
+				MessageBox::Show("Wrong input data", "Error");
+				return;
+			}
 			fin1.close();
 			size = _size;
 			Array = new double[size];

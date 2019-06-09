@@ -2,13 +2,13 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cctype>
 
 using namespace std;
 
 istream& openFileINPUT(ifstream& fin, string name, bool &flag) {
 	fin.open(name);
 	if (!fin.is_open()) {
-		cout << "Error, we dont find this file.";
 		flag = false;
 		return fin;
 	}
@@ -21,7 +21,11 @@ istream& readSize(ifstream& fin, int& size) {
 	string buff = "";
 	getline(fin, buff);
 	for (int i = 0; i < buff.length(); i++) {
-		if (buff[i] == ',') {
+		if (isalpha(buff[i])) {
+			size = 0;
+			return fin;
+		}
+		if (buff[i] == ',' || buff[i] == ' ') {
 			counter++;
 		}
 	}
@@ -57,7 +61,7 @@ istream& fileFillingArray(ifstream& fin, double* Array, int size) {
 	int index = 0;
 	getline(fin, buff);
 	for (int i = 0; i < buff.length(); i++) {
-		if (buff[i] != ',') {
+		if (buff[i] != ',' || buff[i] == ' ') {
 			temp += buff[i];
 		}
 		else {
