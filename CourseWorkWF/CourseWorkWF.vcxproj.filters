@@ -18,13 +18,10 @@
     <ClCompile Include="MyForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SortMethods.cpp">
+    <ClCompile Include="MyArray.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="FileWork.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Functions.cpp">
+    <ClCompile Include="MyStream.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,13 +29,10 @@
     <ClInclude Include="MyForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SortMethods.h">
+    <ClInclude Include="MyArray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FileWork.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Functions.h">
+    <ClInclude Include="MyStream.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

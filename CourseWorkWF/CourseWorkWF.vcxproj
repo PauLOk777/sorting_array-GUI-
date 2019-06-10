@@ -134,18 +134,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FileWork.cpp" />
-    <ClCompile Include="Functions.cpp" />
+    <ClCompile Include="MyArray.cpp" />
     <ClCompile Include="MyForm.cpp" />
-    <ClCompile Include="SortMethods.cpp" />
+    <ClCompile Include="MyStream.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FileWork.h" />
-    <ClInclude Include="Functions.h" />
+    <ClInclude Include="MyArray.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="SortMethods.h" />
+    <ClInclude Include="MyStream.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">

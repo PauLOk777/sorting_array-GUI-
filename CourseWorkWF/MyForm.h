@@ -1,10 +1,10 @@
 #pragma once
-#include "FileWork.h"
-#include "Functions.h"
-#include "SortMethods.h"
 #include <string>
+#include <fstream>
+#include "MyStream.h"
 #include <Windows.h>
 #include <cmath>
+#include "MyArray.h"
 #include <msclr\marshal_cppstd.h>
 
 namespace CourseWorkWF {
@@ -22,19 +22,16 @@ namespace CourseWorkWF {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	private:
-		double* Array;
-		int size;
+		MyArray Array;
 		int rangeBegin;
 		int rangeEnd;
 		int speed;
 	private: System::Windows::Forms::Label^ label3;
-	public:
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::TextBox^ textBox3;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::ToolStripMenuItem^ exitToolStripMenuItem;
 	private: System::Windows::Forms::Label^ label5;
-
 	private: System::Windows::Forms::TextBox^ textBox5;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::TrackBar^ trackBar1;
@@ -42,13 +39,9 @@ namespace CourseWorkWF {
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::Button^ button7;
 	public:
-
-	public:
 		MyForm(void)
 		{
-			Array = nullptr;
 			InitializeComponent();
-			size = 1;
 			rangeBegin = 0;
 			rangeEnd = 1;
 			speed = 150;
@@ -65,8 +58,6 @@ namespace CourseWorkWF {
 				delete components;
 			}
 		}
-
-
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ button4;
@@ -82,10 +73,6 @@ namespace CourseWorkWF {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::GroupBox^ groupBox1;
 	private: System::Windows::Forms::GroupBox^ groupBox2;
-
-
-	protected:
-
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -147,7 +134,6 @@ namespace CourseWorkWF {
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(99, 21);
 			this->comboBox1->TabIndex = 2;
-			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::ComboBox1_SelectedIndexChanged);
 			// 
 			// label1
 			// 
@@ -258,7 +244,6 @@ namespace CourseWorkWF {
 			this->chart1->Size = System::Drawing::Size(652, 531);
 			this->chart1->TabIndex = 11;
 			this->chart1->Text = L"chart1";
-			this->chart1->Click += gcnew System::EventHandler(this, &MyForm::Chart1_Click);
 			// 
 			// textBox1
 			// 
@@ -268,7 +253,6 @@ namespace CourseWorkWF {
 			this->textBox1->Size = System::Drawing::Size(69, 20);
 			this->textBox1->TabIndex = 3;
 			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm::TextBox1_TextChanged);
 			// 
 			// textBox2
 			// 
@@ -277,7 +261,6 @@ namespace CourseWorkWF {
 			this->textBox2->Size = System::Drawing::Size(29, 20);
 			this->textBox2->TabIndex = 4;
 			this->textBox2->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->textBox2->TextChanged += gcnew System::EventHandler(this, &MyForm::TextBox2_TextChanged);
 			// 
 			// button1
 			// 
@@ -396,7 +379,6 @@ namespace CourseWorkWF {
 			this->label5->Size = System::Drawing::Size(41, 13);
 			this->label5->TabIndex = 14;
 			this->label5->Text = L"Speed:";
-			this->label5->Click += gcnew System::EventHandler(this, &MyForm::Label5_Click);
 			// 
 			// trackBar1
 			// 
@@ -427,7 +409,6 @@ namespace CourseWorkWF {
 			this->label8->Size = System::Drawing::Size(13, 13);
 			this->label8->TabIndex = 18;
 			this->label8->Text = L"0";
-			this->label8->TextChanged += gcnew System::EventHandler(this, &MyForm::Label8_TextChanged);
 			// 
 			// MyForm
 			// 
@@ -446,7 +427,6 @@ namespace CourseWorkWF {
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"MyForm";
 			this->Text = L"sorting_array";
-			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
@@ -461,50 +441,30 @@ namespace CourseWorkWF {
 		}
 	#pragma endregion
 	private:
-		System::Void Button2_Click(System::Object^ sender, System::EventArgs^ e) {
-			
-		}
-	private:
-		System::Void TextBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-		
-		}
-	private:
-		System::Void ComboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-
-		}
-	private:
-		System::Void TextBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-
-		}
-	private:
-		System::Void Button3_Click(System::Object^ sender, System::EventArgs^ e) {
-			
-		}
-	private:
 		System::Void Button6_Click(System::Object^ sender, System::EventArgs^ e) {
-			if (Array == nullptr) {
+			if (Array.getArray() == nullptr) {
 				MessageBox::Show("Please, fill array", "Error");
 				return;
 			}
 			speed = abs(Convert::ToInt32(trackBar1->Value));
 			if (comboBox1->SelectedItem->ToString() == "Selection sort") {
-				selectionSort(Array, size, chart1, speed);
+				Array.selectionSort(chart1, speed);
 			}
 			if (comboBox1->SelectedItem->ToString() == "Shell sort") {
-				shellSort(Array, size, chart1, speed);
+				Array.shellSort(chart1, speed);
 			}
 			if (comboBox1->SelectedItem->ToString() == "Heap sort") {
-				heapSort(Array, size, chart1, speed);
+				Array.heapSort(chart1, speed);
 			}
 			this->chart1->Series["value"]->Points->Clear();
 			this->chart1->Series["changed"]->Points->Clear();
-			for (int i = 0; i < size; i++) {
+			for (int i = 0; i < Array.getSize(); i++) {
 				this->chart1->Series["value"]->Points->AddXY(i + 1, Array[i]);
 			}
-			for (int l = 0; l < size; l++) {
+			for (int l = 0; l < Array.getSize(); l++) {
 				this->chart1->Series["value"]->Points->Clear();
 				this->chart1->Series["sorted"]->Points->Clear();
-				for (int j = 0; j < size; j++) {
+				for (int j = 0; j < Array.getSize(); j++) {
 					if (l > j) {
 						this->chart1->Series["sorted"]->Points->AddXY(j + 1, Array[j]);
 						continue;
@@ -517,7 +477,7 @@ namespace CourseWorkWF {
 			this->chart1->Series["value"]->Points->Clear();
 			this->chart1->Series["changed"]->Points->Clear();
 			this->chart1->Series["sorted"]->Points->Clear();
-			for (int i = 0; i < size; i++) {
+			for (int i = 0; i < Array.getSize(); i++) {
 				this->chart1->Series["sorted"]->Points->AddXY(i + 1, Array[i]);
 			}
 			chart1->Update();
@@ -541,28 +501,22 @@ namespace CourseWorkWF {
 				MessageBox::Show("Range can't be a negative number!", "Error");
 				return;
 			}
-			Array = new double[_size];
-			randomFillingArray(Array, _size, begin, end);
-			size = _size;
+			Array.setSize(_size);
+			Array.randomFillingArray(begin, end);
 			button1->Enabled = false;
 			button7->Enabled = false;
 			textBox1->Enabled = false;
 			textBox2->Enabled = false;
 			textBox3->Enabled = false;
 			textBox5->Enabled = false;
-			for (int i = 0; i < size; i++) {
+			for (int i = 0; i < Array.getSize(); i++) {
 				this->chart1->Series["value"]->Points->AddXY(i + 1, Array[i]);
 			}
 			MessageBox::Show("Success", "Array was filled");
 		}
-	private:
-		System::Void Chart1_Click(System::Object^ sender, System::EventArgs^ e) {
-			
-		}
 	private: 
 		System::Void Button5_Click(System::Object^ sender, System::EventArgs^ e) {
-			if(Array != nullptr) delete[] Array;
-			size = 0;
+			Array.clear();
 			button4->Enabled = true;
 			button1->Enabled = true;
 			button7->Enabled = true;
@@ -580,67 +534,46 @@ namespace CourseWorkWF {
 		}
 	private:
 		System::Void Button4_Click(System::Object^ sender, System::EventArgs^ e) {
-			if (Array == nullptr) return;
-			writeFile(Array, size);
+			if (Array.getArray() == nullptr) return;
+			MyStream newStream;
+			newStream.writeFile(Array.getArray(), Array.getSize());
 			MessageBox::Show("Success", "Output file was filled");
 	}
-	private: 
-		System::Void Button3_Click_1(System::Object^ sender, System::EventArgs^ e) {
-		
-		}
 	private:
 		System::Void Button7_Click(System::Object^ sender, System::EventArgs^ e) {
-			ifstream fin1, fin2;
+			MyStream stream;
 			int _size;
-			bool flag = true;;
 			msclr::interop::marshal_context context;
 			std::string stdString = context.marshal_as<std::string>(textBox5->Text);
-			openFileINPUT(fin1, stdString, flag);
-			if (!flag) {
+			if (!stream.openFileINPUT(stdString)) {
 				MessageBox::Show("Invalid file", "Error");
 				return;
 			}
-			readSize(fin1, _size);
+			stream.readSize(_size);
 			if (!_size) {
 				MessageBox::Show("Wrong input data", "Error");
 				return;
 			}
-			fin1.close();
-			size = _size;
-			Array = new double[size];
-			openFileINPUT(fin2, stdString, flag);
-			fileFillingArray(fin2, Array, size);
+			double* newArray = new double[_size];
+			stream.fileFillingArray(newArray);
+			for (int i = 0; i < _size; i++) {
+				Array.add(newArray[i]);
+			}
+			delete[] newArray;
 			button1->Enabled = false;
 			button7->Enabled = false;
 			textBox1->Enabled = false;
 			textBox2->Enabled = false;
 			textBox3->Enabled = false;
 			textBox5->Enabled = false;
-			for (int i = 0; i < size; i++) {
+			for (int i = 0; i < Array.getSize(); i++) {
 				this->chart1->Series["value"]->Points->AddXY(i + 1, Array[i]);
 			}
 			MessageBox::Show("Success", "Array was filled");
 		}
 	private: 
 		System::Void ExitToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-			if (Array != nullptr) delete[] Array;
 			Application::Exit();
-		}
-	private: 
-		System::Void TextBox4_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-			
-		}
-	private: 
-		System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
-			
-		}
-	private: 
-		System::Void Label5_Click(System::Object^ sender, System::EventArgs^ e) {
-	
-		}
-	private: 
-		System::Void Label8_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-			
 		}
 	private:
 		System::Void TrackBar1_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
